@@ -22,10 +22,10 @@ fi
 if hash tilda > /dev/null 2>&1 ; then
     run tilda
 fi
-if hash compton > /dev/null 2>&1 ; then
-    run compton
-elif hash picom > /dev/null 2>&1 ; then
+if hash picom > /dev/null 2>&1 ; then
     run picom --experimental-backends
+elif hash compton > /dev/null 2>&1 ; then
+    run compton
 fi
 
 run xfce4-power-manager

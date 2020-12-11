@@ -438,6 +438,7 @@ function theme.at_screen_connect(s)
         expand = "none",
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
+            s.mylayoutbox,
             s.mypromptbox,
             tspace1,
             s.mytasklist,

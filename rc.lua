@@ -268,7 +268,7 @@ globalkeys = my_table.join(
     -- Take a screenshot
     -- https://github.com/lcpz/dots/blob/master/bin/screenshot
     awful.key({ altkey }, "p", function() os.execute("screenshot") end,
-              {description = "take a screenshot", group = "hotkeys"}),
+              {description = "take a screenshot", group = "screenshots"}),
 
     -- X screen locker
     awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
@@ -291,7 +291,7 @@ globalkeys = my_table.join(
         {description = "edit config files" , group = "dmenu scripts" }),
     awful.key({ altkey, "Control" }, "m", function () awful.util.spawn( "./.dmenu/dmenu-sysmon.sh" ) end,
         {description = "system monitoring apps" , group = "dmenu scripts" }),
-    awful.key({ altkey, "Control" }, "o", function () awful.util.spawn( "./scripts/toggle_compton" ) end,
+    awful.key({ altkey, "Control" }, "o", function () awful.util.spawn( "./scripts/toggle-compositor" ) end,
         {description = "sys compton toggle" , group = "terminal apps" }),
     awful.key({ altkey, "Control" }, "p", function () awful.util.spawn( "passmenu" ) end,
         {description = "passmenu" , group = "dmenu scripts" }),
@@ -309,20 +309,18 @@ globalkeys = my_table.join(
         {description = "mocp" , group = "terminal apps" }),
     awful.key({ modkey, altkey  }, "v", function () awful.util.spawn( terminal.." -e sh ./.local/bin/vv" ) end,
         {description = "vifm" , group = "terminal apps" }),
-    awful.key({ modkey, altkey }, "l", function () awful.util.spawn( terminal.." -e lynx --cfg=~/.lynx/lynx.cfg --lss=~/.lynx/lynx.lss -vikeys gopher://distro.tube" ) end,
-        {description = "lynx cli browser" , group = "terminal apps" }),
     awful.key({ modkey, altkey }, "n", function () awful.util.spawn( terminal.." -e newsboat" ) end,
         {description = "newsboat" , group = "terminal apps" }),
     awful.key({ modkey, altkey  }, "y", function () awful.util.spawn( terminal.." -e youtube-viewer" ) end,
         {description = "youtube-viewer" , group = "terminal apps" }),
 
     -- screenshots
-    awful.key({ }, "Print", function () awful.util.spawn("scrot 'ArcoLinuxD-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'") end,
+    awful.key({ }, "Print", function () awful.util.spawn("scrot 'AwesomeSmike-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'") end,
         {description = "Scrot", group = "screenshots"}),
-    awful.key({ modkey1           }, "Print", function () awful.util.spawn( "xfce4-screenshooter" ) end,
+    awful.key({ altkey           }, "Print", function () awful.util.spawn( "xfce4-screenshooter" ) end,
         {description = "Xfce screenshot", group = "screenshots"}),
-    awful.key({ modkey1, "Shift"  }, "Print", function() awful.util.spawn("gnome-screenshot -i") end,
-        {description = "Gnome screenshot", group = "screenshots"}),
+    awful.key({ altkey, "Shift"  }, "Print", function() awful.util.spawn( terminal.." -e ./.dmenu/dmenu-scrot.sh") end,
+        {description = "dmenu screenshot", group = "screenshots"}),
 
     -- Personal keybindings}}}
 
@@ -659,8 +657,8 @@ clientkeys = my_table.join(
         end ,
         {description = "maximize", group = "client"}),
     awful.key({ modkey, "Mod1"    }, "F3",
-        function () 
-            awful.tag.incmwfact(-0.01)    
+        function ()
+            awful.tag.incmwfact(-0.01)
         end,
         {description = "reize Left", group = "client"}),
 --),
@@ -681,7 +679,7 @@ clientkeys = my_table.join(
         {description = "reize DN", group = "client"}),
     awful.key({ modkey, "Shift"   }, "m",
         function (c)
-            awful.layout.set(awful.layout.suit.tile) 
+            awful.layout.set(awful.layout.suit.tile)
             c:raise()
         end ,
         {description = "suit.tile", group = "client"})
