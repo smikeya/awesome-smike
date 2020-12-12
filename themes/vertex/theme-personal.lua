@@ -460,9 +460,9 @@ function theme.at_screen_connect(s)
 --            wificon,
 --            rspace0,
             volicon,
-            rspace2,
-            baticon,
-            rspace3,
+            rspace1,
+--            baticon,
+--            rspace3,
             wibox.widget.systray(),
         },
     }
